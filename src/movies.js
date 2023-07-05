@@ -1,30 +1,30 @@
 // Iteration 1: All directors? - Get the array of all directors.
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
-function getAllDirectors(moviesArray) {
-    return moviesArray.map(movie => movie.director);
-}
+    function getAllDirectors(moviesArray) {
+        return moviesArray.map(movie => movie.director);
+    }
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 function howManyMovies(moviesArray) {}
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage(movies) {
-    if (movies.length === 0) {
-      return 0;
+    function scoresAverage(movies) {
+        if (movies.length === 0) {
+        return 0;
+        }
+        
+        const totalScore = movies.reduce((sum, movie) => {
+        return movie.score !== undefined ? sum + movie.score : sum;
+        }, 0);
+        
+        const movieCount = movies.length;
+        
+        const averageScore = totalScore / movieCount;
+        
+        return Number(averageScore.toFixed(2));
+
     }
-    
-    const totalScore = movies.reduce((sum, movie) => {
-      return movie.score !== undefined ? sum + movie.score : sum;
-    }, 0);
-    
-    const movieCount = movies.length;
-    
-    const averageScore = totalScore / movieCount;
-    
-    return Number(averageScore.toFixed(2));
-    
-  }
 
 
   
@@ -41,9 +41,9 @@ function orderByYear(movies) {
     
     sortedMovies.sort((a, b) => {
       if (a.year !== b.year) {
-        return a.year - b.year; // Sort by year in ascending order
+        return a.year - b.year; 
       } else {
-        return a.title.localeCompare(b.title); // Sort by title alphabetically
+        return a.title.localeCompare(b.title); 
       }
     });
     
@@ -57,21 +57,21 @@ function orderAlphabetically(moviesArray) {}
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(movies) {
     const modifiedMovies = movies.map(movie => {
-      const newMovie = { ...movie }; // Create a shallow copy of each movie object
+      const newMovie = { ...movie }; 
       
-      const durationParts = newMovie.duration.split(' '); // Split duration into hours and minutes
+      const durationParts = newMovie.duration.split(' '); 
       
       let totalMinutes = 0;
       
       for (const part of durationParts) {
         if (part.includes('h')) {
-          totalMinutes += parseInt(part) * 60; // Convert hours to minutes
+          totalMinutes += parseInt(part) * 60; 
         } else if (part.includes('min')) {
-          totalMinutes += parseInt(part); // Add minutes
+          totalMinutes += parseInt(part); 
         }
       }
       
-      newMovie.duration = totalMinutes; // Update duration to total minutes
+      newMovie.duration = totalMinutes; 
       
       return newMovie;
     });
