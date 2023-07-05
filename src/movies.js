@@ -23,7 +23,10 @@ function scoresAverage(movies) {
     const averageScore = totalScore / movieCount;
     
     return Number(averageScore.toFixed(2));
+    
   }
+
+
   
   
 
